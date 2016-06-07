@@ -4,33 +4,33 @@
 #include "vmcsolver.h"
 #include "derivatives.h"
 
+#include "slaterdeterminantmaster.h"
+
 
 using namespace arma;
 
 class VMCSolver;
 
-class SlaterDeterminantHO
+class SlaterDeterminantHO : public slaterDeterminantMaster
 {
 
 public:
     SlaterDeterminantHO();
     ~SlaterDeterminantHO();
 
-
-
-    void updateSlaterMatrices(const mat &r, VMCSolver *solver);
-    double calculateDeterminant(VMCSolver *solver);
+    virtual void updateSlaterMatrices(const mat &r, VMCSolver *solver);
+    virtual double calculateDeterminant(VMCSolver *solver);
     //double phi(const mat &r, double alpha, int i, int j, VMCSolver *solver);
 //    double SlaterDeterminant::determinantRatioUp(const mat &r, VMCSolver *solver, Derivatives *der);
 //    double SlaterDeterminant::determinantRatioDown(const mat &r, VMCSolver *solver, Derivatives *der);
-    vec gradientPhi(const mat &r, int i, int j, VMCSolver *solver);
-    double laplacianPhi(const mat &r, int i, int j, VMCSolver *solver);
+    virtual vec gradientPhi(const mat &r, int i, int j, VMCSolver *solver);
+    virtual double laplacianPhi(const mat &r, int i, int j, VMCSolver *solver);
 
-    mat gradientSlaterDeterminant(const mat &r , VMCSolver *solver);
-    double laplacianSlaterDeterminant(const mat &r , VMCSolver *solver);
+    virtual mat gradientSlaterDeterminant(const mat &r , VMCSolver *solver);
+    virtual double laplacianSlaterDeterminant(const mat &r , VMCSolver *solver);
 
     //For the molecule we need a different wavefunctions
-    double phiMolecule(const mat &r, double alpha, int i, int j, VMCSolver *solver);
+    //virtual double phiMolecule(const mat &r, double alpha, int i, int j, VMCSolver *solver);
 
     mat detUpOld;
     mat detDownOld;
@@ -41,7 +41,7 @@ public:
     int updateDeterminantCounter = 0;
 
 private:
-    bool useGTO;
+    //bool useGTO;
 
 
 

@@ -183,7 +183,7 @@ void SlaterDeterminant::updateSlaterMatrices(const mat &r, VMCSolver *solver)
 
 }
 
-double SlaterDeterminant::calculateDeterminant(const mat &r,double alpha, VMCSolver *solver)
+double SlaterDeterminant::calculateDeterminant(VMCSolver *solver)
 {
     int i, j, Nhalf;
     double d1, d2, SD;

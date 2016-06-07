@@ -12,7 +12,9 @@
 #include "trialFunctions/hydrogentwo.h"
 #include "trialFunctions/berylliumtwo.h"
 #include "trialFunctions/QuantumDots.h"
+#include "slaterdeterminantmaster.h"
 #include "slaterdeterminant.h"
+#include "slaterdeterminantHO.h"
 
 #include <iostream>
 #include <time.h>
@@ -744,6 +746,10 @@ void chooseTrialFunction(string args1, VMCSolver *solver)
     else if(args1=="QuantumDots") solver->setTrialFunction(new QuantumDots(solver));
 
     else {if(my_rank==0) cout << args1 << " is not a valid atom" << endl; exit(1);}
+
+    // set correct slaterdeterminant class
+    if(args1=="QuantumDots") {solver->setSlaterDeterminant(new SlaterDeterminantHO);}
+    else {solver->setSlaterDeterminant(new SlaterDeterminant);} //aaa
 }
 
 /*

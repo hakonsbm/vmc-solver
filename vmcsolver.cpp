@@ -37,8 +37,8 @@ VMCSolver::VMCSolver():
     switchElectronInteraction(true);
     initiateDerivatives(new Derivatives);
     initiateHO(new Orbitals);
-    initiateHO_3d(new Orbitals_3d);
-    initiateSlaterDeterminantHO(new SlaterDeterminantHO);
+    //initiateHO_3d(new Orbitals_3d);
+    //initiateSlaterDeterminantHO(new SlaterDeterminantHO);
 
     //determinant()->setGTO(false);
 }

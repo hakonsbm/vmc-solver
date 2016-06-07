@@ -47,7 +47,8 @@ SOURCES += main.cpp \
     trialFunctions/QuantumDots.cpp \
     HO/BasisFunctions.cpp \
     HO/HarmonicOscillator_3d.cpp \
-    HO/Orbitals_3d.cpp
+    HO/Orbitals_3d.cpp \
+    slaterdeterminantmaster.cpp
 
 HEADERS += \
     vmcsolver.h \
@@ -75,7 +76,8 @@ HEADERS += \
     trialFunctions/QuantumDots.h \
     HO/BasisFunctions.h \
     HO/HarmonicOscillator_3d.h \
-    HO/Orbitals_3d.h
+    HO/Orbitals_3d.h \
+    slaterdeterminantmaster.h
 
 SUBDIRS += \
     vmc_gcc.pro

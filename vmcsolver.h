@@ -8,14 +8,15 @@
 #include "trialFunctions/heliumjastrownumerical.h"
 #include "trialFunctions/heliumjastrowanalytical.h"
 #include "derivatives.h"
+#include "slaterdeterminantmaster.h"
 //#include "slaterdeterminant.h"
-#include "slaterdeterminantHO.h"
+//#include "slaterdeterminantHO.h"
 #include "HO/Orbitals.h"
 #include "HO/Orbitals_3d.h"
 
 using namespace arma;
 
-class TrialFunction; class Derivatives; class SlaterDeterminantHO; class Orbitals; class Orbitals_3d;
+class TrialFunction; class Derivatives; class slaterDeterminantMaster; class SlaterDeterminantHO; class SlaterDeterminant; class Orbitals; class Orbitals_3d;
 
 class VMCSolver
 {
@@ -45,8 +46,6 @@ public:
     void initiateDerivatives(Derivatives *derivatives) {m_derivatives = derivatives; }
     Derivatives *derivatives(){return m_derivatives;}
 
-    //void initiateSlaterDeterminant(SlaterDeterminant *determinant) {m_slaterDeterminant = determinant;}
-    //SlaterDeterminant *determinant() {return m_slaterDeterminant;}
 
     void initiateHO(Orbitals *HOorbitals) {m_orbitals = HOorbitals;}
     Orbitals *orbitals() {return m_orbitals;}
@@ -54,8 +53,15 @@ public:
     void initiateHO_3d(Orbitals_3d *HOorbitals) {m_orbitals_3d = HOorbitals;}
     Orbitals_3d *orbitals_3d() {return m_orbitals_3d;}
 
+    /*
     void initiateSlaterDeterminantHO(SlaterDeterminantHO *determinant) {m_slaterDeterminant = determinant;}
     SlaterDeterminantHO *determinant() {return m_slaterDeterminant;}
+
+    void initiateSlaterDeterminant(SlaterDeterminant *determinant) {m_slaterDeterminant = determinant;}
+    SlaterDeterminant *determinant() {return m_slaterDeterminant;}
+    */
+    void setSlaterDeterminant(slaterDeterminantMaster *determinant) {m_slaterDeterminant = determinant;}
+    slaterDeterminantMaster *determinant() {return m_slaterDeterminant;}
 
     TrialFunction *trialFunction(){return m_trialFunction;}
 
@@ -100,7 +106,8 @@ private:
     Orbitals *m_orbitals;
     Orbitals_3d *m_orbitals_3d;
     //SlaterDeterminant *m_slaterDeterminant;
-    SlaterDeterminantHO *m_slaterDeterminant;
+    //SlaterDeterminantHO *m_slaterDeterminant;
+    slaterDeterminantMaster *m_slaterDeterminant;
 
 
     double waveFunction(const mat &r);
